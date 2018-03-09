@@ -1,0 +1,10 @@
+
+
+{% extends 'base.html' %}
+{% block bodyBlock %}
+    {% for object in about_list %}
+    <h2>{{ object.title }}</h2>
+            <h2>{{ object.author }}| {{ object.created }}</h2>
+            <p>{{ object.body }}</p>
+    {% endfor about_list %}
+{% endblock %}
