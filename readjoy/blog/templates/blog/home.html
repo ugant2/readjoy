@@ -6,7 +6,7 @@
 {% block bodyBlock %}
     {% for object in home_list %}
         <div class="home_post">
-            <h2>{{ object.title }}</h2>
+            <h2><a href="{% url 'blogs:detail_pg' pk=object.pk %}">{{ object.title }}</a></h2>
             <h2>{{ object.author }}| {{ object.created }}</h2>
             <p>{{ object.body }}</p>
         </div>

@@ -3,11 +3,25 @@
 {% extends 'base.html' %}
 
 {% block bodyBlock %}
-{% for obj in one_post %}
-    <div class="detail_post">
-    <h2>{{ obj.title }}</h2>
-    <h2>{{ obj.author }} | {{ obj.created }}</h2>
-    <p>{{ obj.body }}</p>
-</div>
-    {% endfor %}
+
+    <div class="one_post">
+        <h2>{{ post.title }}</h2>
+        <h2>{{ post.author }} | {{ post.created }}</h2>
+        <p>{{ post.body }}</p>
+    </div>
+    <hr>
+    <h2>Comments</h2>
+    {% for comments in comment %}
+        <p>{{ comments.name }}</p>
+        <p>{{ comments.email }}</p>
+        <p>{{ comments.comment_body }}</p> <br>
+
+    {% endfor comment %}
+    <hr>
+    <h2>Add Comment</h2>
+    <form action="" method="post">{% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value="comment">
+    </form>
+
 {% endblock bodyBlock %}

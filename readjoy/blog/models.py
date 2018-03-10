@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import CASCADE
 from django.utils import timezone
 
 
@@ -35,5 +36,15 @@ class Post(models.Model):
     # string representation
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    post_id = models.ForeignKey('Post', related_name='post_comment', on_delete=CASCADE)
+    name = models.CharField(max_length=200)
+    email = models.EmailField(blank=True, null=True)
+    comment_body = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 
 
