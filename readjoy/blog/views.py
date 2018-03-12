@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
 from blog.models import Post
-from blog.forms import CommentForm
+from blog.forms import CommentForm, PostForm
 
 
 class HomeListView(ListView):
@@ -23,7 +25,7 @@ class PostDetailView(DetailView):
         except:
             raise Http404
 
-        comment = one_post.post_comment.all() # based on the post get comments
+        comment = one_post.post_comment.all()  # based on the post get comments
         form_comment = CommentForm()
 
         # context
@@ -51,3 +53,32 @@ class AboutListView(ListView):
     template_name = 'blog/about.html'
     context_object_name = 'about_list'
     queryset = Post.published.all()
+
+
+# for registering users
+def register(request):
+    form = None
+    if request.method == 'POST':
+        user_form = UserCreationForm(data=request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save()
+            return redirect('blogs:home_pg')
+    else:
+        form = UserCreationForm()
+    return render(request, 'blog/register.html', {'form': form})
+
+
+# for posting new post by the uer or admin
+@login_required
+def new_post(request):
+    form = None
+    if request.method == "POST":
+        new_post = PostForm(data=request.POST)
+        if new_post.is_valid():
+            post = new_post.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blogs:detail_pg', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/newPost.html', {'form':form})

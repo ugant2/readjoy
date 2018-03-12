@@ -14,10 +14,17 @@
                 <a class="nav-link" href="{% url 'blogs:about_pg' %}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'blogs:post_pg' %}">Create Post</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                {% if user.is_authenticated %}
+                    <h6>{{ user.username }}</h6>
+                    <a class="nav-link" href="{% url 'blogs:logout' %}?next={% url 'blogs:home_pg' %}">Logout</a>
+                    <a class="nav-link" href="#">View Profile</a>
+                {% else %}
+                    <a class="navbar-link" href="{% url 'blogs:login' %}?next={{ request.path }}">Blog Login</a>
+                    <a class="nav-link" href="{% url 'blogs:register' %}">Register</a>
+                {% endif %}
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
