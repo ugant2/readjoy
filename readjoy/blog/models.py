@@ -47,4 +47,15 @@ class Comment(models.Model):
         return self.name
 
 
+class Profile(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField(blank=True, null=True)
+    address = models.CharField(max_length=50)
+    phone = models.CharField(max_length=30)
+    image = models.ImageField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 

@@ -3,5 +3,10 @@
 
 {% extends 'base.html' %}
 {% block bodyBlock %}
-Contact page
+    <h2>Contact page</h2>
+    <form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info">Send</button>
+    </form>
 {% endblock %}

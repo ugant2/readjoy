@@ -2,14 +2,31 @@
 
 {% extends 'base.html' %}
 
+{% load paginator_tags %}
+{% load staticfiles %}
 
 {% block bodyBlock %}
+
     {% for object in home_list %}
-        <div class="home_post">
+        <div id="content">
             <h2><a href="{% url 'blogs:detail_pg' pk=object.pk %}">{{ object.title }}</a></h2>
             <h2>{{ object.author }}| {{ object.created }}</h2>
             <p>{{ object.body }}</p>
         </div>
     {% endfor home_list %}
 
-{% endblock %}
+       <div class="image">
+        <a href="/image">More picture...</a>
+        <img src="{% static 'image/pa.jpg' %}" height="300px" width="100%">
+        <img src="{% static 'image/w.jpg' %}" height="200px" width="100%">
+        <img src="{% static 'image/pan.jpg' %}" height="200px" width="40%">
+        <img src="{% static 'image/sch.jpg' %}" height="200px" width="50%">
+        <img src="{% static 'image/panau.jpg' %}" height="200px" width="100%">
+
+    </div>
+
+    <div>
+        {% paginator %}
+    </div>
+
+{% endblock bodyBlock %}

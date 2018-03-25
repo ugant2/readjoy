@@ -1,0 +1,14 @@
+
+
+{% extends 'base.html' %}
+{% block bodyBlock %}
+    <h2>profile page</h2>
+    {% for object in profile_list %}
+       <p>{{ object.name }}</p>
+        <p>{{ object.email }}</p>
+        <p>{{ object.address }}</p>
+        <p>{{ object.phone }}</p>
+        <p>{{ object.image }}</p>
+    {% endfor %}
+    <button type="submit">Edit</button>
+{% endblock %}

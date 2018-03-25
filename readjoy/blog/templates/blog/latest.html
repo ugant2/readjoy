@@ -1,0 +1,7 @@
+
+
+<ul>
+    {% for blog in latest_blog %}
+        <li><a href="{% url 'blogs:detail_pg' pk=blog.pk %}">{{ blog }}</a></li>
+    {% endfor %}
+</ul>

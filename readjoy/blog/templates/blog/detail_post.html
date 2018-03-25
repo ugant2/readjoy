@@ -1,6 +1,7 @@
 
 
 {% extends 'base.html' %}
+{% load blog_tags %}
 
 {% block bodyBlock %}
 
@@ -9,6 +10,13 @@
         <h2>{{ post.author }} | {{ post.created }}</h2>
         <p>{{ post.body }}</p>
     </div>
+    <h2>Similar Post:</h2>
+    {% similar post.title post.pk as ditto_page %}
+    <ul>
+     {% for same in ditto_page %}
+         <li><a href="{% url 'blogs:detail_pg' pk=same.pk %}">{{ same.title }}</a></li>
+    {% endfor %}
+    </ul>
     <hr>
     <h2>Comments</h2>
     {% for comments in comment %}
