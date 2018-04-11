@@ -91,7 +91,8 @@ def new_post(request):
             return redirect('blogs:detail_pg', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/newPost.html', {'form':form})
+    return render(request, 'blog/newPost.html', {'form': form})
+
 
 # contact form via email
 def contact_form(request):
@@ -124,6 +125,7 @@ def contact_form(request):
             return redirect('blogs:contact_pg')
     return render(request, 'blog/contact.html', {'form': contact_form})
 
+
 # for REST API
 class JSONResponse(HttpResponse):
     def __init__(self, data, *args, **kwargs):
@@ -131,10 +133,13 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/JSON'
         super(JSONResponse, self).__init__(content, **kwargs)
 
+
 def post_list_api(request):
     if request.method == 'GET':
         posts = Post.published.all()
         post_serializer = PostSerializer(posts, many=True)
+        return JSONResponse(post_serializer.data)
+
 
 def post_detail_api(request, pk):
     try:
@@ -144,6 +149,7 @@ def post_detail_api(request, pk):
     if request.method == 'GET':
         post_detail_serializer = PostSerializer(one_post)
         return JSONResponse(post_detail_serializer.data)
+
 
 def api_doc(request):
     return render(request, 'blog/api_doc.html')

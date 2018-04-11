@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import CASCADE
 from django.utils import timezone
+from django.conf import settings
 
 
 # custom model manager
@@ -48,14 +49,15 @@ class Comment(models.Model):
 
 
 class Profile(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.OneToOneField('auth.User')
     email = models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=50)
     phone = models.CharField(max_length=30)
     image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.email
+        # return self.name
 
 
 

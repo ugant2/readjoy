@@ -1,5 +1,5 @@
 from django import forms
-from blog.models import Comment, Post
+from blog.models import Comment, Post, Profile
 
 
 class CommentForm(forms.ModelForm):
@@ -18,3 +18,9 @@ class ContactForm(forms.Form):
     email_id = forms.EmailField()
     subject = forms.CharField(max_length=50)
     email_body = forms.CharField(max_length=200, widget=forms.Textarea)
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'address', 'phone', 'image']

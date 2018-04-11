@@ -4,7 +4,7 @@
 {% extends 'base.html' %}
 {% block bodyBlock %}
     <h2>Contact page</h2>
-    <form action="." method="post">
+    <form action="email_template.html" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-info">Send</button>
