@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block bodyBlock %}
+    <h2>Profile Delete page</h2>
+
+<div class="container">
+
+{#<form method="post" action="{% url 'blogs:profile_delete' pk=user.pk %} ">#}
+{#    {% csrf_token %}#}
+{##}
+{#    <p>Name: {{ form.name }}</p>#}
+{#    <p>Address: {{ form.address }}</p>#}
+{#    <p>Email: {{ form.email }}</p>#}
+{#    <p>Phone: {{ form.phone }}</p>#}
+{#    <button class="btn-success" type="submit">Delete</button>#}
+{##}
+{#</form>#}
+
+<h1>Delete{{ object.user.profile.name }}</h1>
+
+<form method="post" action=".">
+{% csrf_token %}
+    <input type="submit" value="Yes">
+    <a href="{{ object.pk }}">Cancel</a>
+    Want to delete?
+</form>
+</div>
+{% endblock %}
+

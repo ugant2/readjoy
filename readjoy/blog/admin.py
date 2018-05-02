@@ -39,8 +39,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'address', 'phone']
+    list_display = ['name', 'email', 'phone', 'address', 'image']
     actions = ['export_to_csv']
+
+
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)

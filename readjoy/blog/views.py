@@ -3,18 +3,19 @@ from email.message import EmailMessage
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.http import Http404, HttpResponse, request
+from django.core.checks import messages
+from django.db.models import Q
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
-from django.views.generic import ListView, DetailView
-from django.db.models import Q
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 
 from blog.api.serializers import PostSerializer
-from blog.models import Post, Profile
 from blog.forms import CommentForm, PostForm, ContactForm
-
+from blog.models import Post, Profile
+from django.urls import reverse_lazy
 
 class HomeListView(ListView):
     model = Post
@@ -160,3 +161,41 @@ class UserProfleListView(ListView):
     model = Profile
     template_name = 'blog/profile.html'
     context_object_name = 'profile_list'
+
+    # def update_profile(request, user_id):
+    #     user = User.objects.get(pk=user_id)
+    #     user.profile.name = 'Lorem'
+    #     user.save()
+    # Generally speaking you will never have to call the profiles save method.
+    # everything is done through the User model.
+
+
+class ProfileUpdateForm(UpdateView):
+        model = Profile
+        fields = ['name', 'email', 'address', 'phone', 'image']
+        template_name = 'blog/profile_edit.html'
+        # success_url = reverse_lazy('blogs:profile_pg') is needed if when get_absolute_url is not defined in model.py
+
+class ProfileDeleteForm(DeleteView):
+    model = Profile
+    fields = ['name', 'email', 'address', 'phone', 'image']
+    template_name = 'blog/profile_delete.html'
+    success_url = reverse_lazy('blogs:home_pg') # itll redirect to home page ater delete
+
+
+# def profile_delete_view(request, pk=None):
+#     obj = get_object_or_404(Profile, pk=pk)
+#     if request.method == 'POST':
+#         obj.delete()
+#
+#         return redirect('blogs:home_pg')
+#     ctx = {
+#         'object':obj,
+#     }
+#     return render(request, template_name='blog/profile_delete.html', content_type=ctx)
+
+
+def profile_delete_view(request, pk):
+    obj = get_object_or_404(Profile, pk=pk)
+    obj.delete()
+    return redirect('blogs:profile_delete')

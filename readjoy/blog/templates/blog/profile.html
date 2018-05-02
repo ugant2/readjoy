@@ -2,13 +2,50 @@
 
 {% extends 'base.html' %}
 {% block bodyBlock %}
-    <h2>profile page</h2>
-    {% for object in profile_list %}
-       <p>{{ object.name }}</p>
-        <p>{{ object.email }}</p>
-        <p>{{ object.address }}</p>
-        <p>{{ object.phone }}</p>
-        <p>{{ object.image }}</p>
-    {% endfor %}
-    <button type="submit">Edit</button>
+
+    <div class="container">
+
+        {#    <a href="profile.html"></a>#}
+        {#        <p> {{ user}}</p>#}
+        {#        <p> {{ user.first_name }}</p>#}
+        {#        <p>{{ user.last_name }}</p>#}
+        {#        <p>{{ user.is_active }}</p>#}
+        {#        <p>{{ user.phone }}</p>#}
+        {#        <p><img src="{{ user.image.url }}" height="300px" width="100%"></p>#}
+        {#        <p>{{ user.email }}</p><br><br>#}
+
+        {#    {% if user.is_active %}#}
+        {#        <p>this is it</p>#}
+        {#        {% endif %}#}
+
+    {# Using extracting user profile using Signals #}
+    <h3>Profile of:- {{ user.get_full_name }}</h3>
+    <form method="post" action=" {% url 'blogs:profile_edit' pk=user.profile.pk %}">{% csrf_token %}
+        <ul>
+        <img src="{{ user.profile.image.url }}" height="300px" width="100%">
+        <li>Username: {{ user.username }}</li>
+        <li>Alternative Name: {{ user.profile.name }}</li>
+        <li>Logged in Email: {{ user.email }}</li>  {# extended from user instance #}
+        <li>Email: {{ user.profile.email }}</li>
+        <li>Phone: {{ user.profile.phone }}</li>
+        <li>Address: {{ user.profile.address }}</li>
+    </ul>
+        <button class="btn-danger" type="submit">Edit</button>
+        <button class="btn-danger" type="submit">Delete</button>
+    </form>
+
+
+{#        this extract all the user profile along with logged in user#}
+{#        {% for objects in profile_list %}#}
+{##}
+{#            <p>{{ objects.name }}</p>#}
+{#            <p>{{ objects.email }}</p>#}
+{#            <p>{{ objects.address }}</p>#}
+{#            <p><img src="{{ objects.image.url }}" height="300px" width="100%"></p>#}
+{##}
+{#        {% endfor profile_list %}#}
+
+    </div>
+
+
 {% endblock %}

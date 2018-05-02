@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block bodyBlock %}
+    <h2>Profile edit page</h2>
+
+<div class="container">
+
+<form method="post" action=" ">
+    {% csrf_token %}
+
+    <p>Name: {{ form.name }}</p>
+    <p>Address: {{ form.address }}</p>
+    <p>Email: {{ form.email }}</p>
+    <p>Phone: {{ form.phone }}</p>
+    <button class="btn-success" type="submit">Save</button>
+
+</form>
+</div>
+{% endblock %}
+

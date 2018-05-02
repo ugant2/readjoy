@@ -1,5 +1,6 @@
 from django import forms
 from blog.models import Comment, Post, Profile
+from django.views.generic.edit import UpdateView
 
 
 class CommentForm(forms.ModelForm):
@@ -20,7 +21,8 @@ class ContactForm(forms.Form):
     email_body = forms.CharField(max_length=200, widget=forms.Textarea)
 
 
-class UserEditForm(forms.ModelForm):
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['name', 'email', 'address', 'phone', 'image']
+

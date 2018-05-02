@@ -1,0 +1,12 @@
+
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block bodyBlock %}
+    <h1>This is Matplotlib test</h1>
+    <p><a href="http://localhost:8000/api/post/2/">API</a></p>
+
+    <img src="{% static 'image/test.png' %}" height="300px" width="500px">
+    <img src="{% static 'image/area.png' %}" height="300px" width="500px">
+
+{% endblock bodyBlock %}

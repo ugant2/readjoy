@@ -8,6 +8,7 @@ admin.site.site_title = "Blog Admin Panel"
 admin.site.index_title = "Dblog Admininstration"
 
 urlpatterns = [
+    url(r'', include('figure.urls')),
     url(r'', include('blog.urls')),
     url(r'^admin/', admin.site.urls),
 ]

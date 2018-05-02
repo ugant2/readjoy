@@ -1,7 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import CASCADE
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.urls import reverse
 from django.utils import timezone
-from django.conf import settings
 
 
 # custom model manager
@@ -38,6 +41,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
     post_id = models.ForeignKey('Post', related_name='post_comment', on_delete=CASCADE)
     name = models.CharField(max_length=200)
@@ -49,15 +53,26 @@ class Comment(models.Model):
 
 
 class Profile(models.Model):
-    name = models.OneToOneField('auth.User')
+    name = models.OneToOneField(User, on_delete=CASCADE) # this field is required
     email = models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=50)
     phone = models.CharField(max_length=30)
     image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return self.email
-        # return self.name
+        return 'Profile of user: {}'.format(self.name.username)
+
+    def get_absolute_url(self):
+        return reverse('blogs:profile_edit', kwargs={'pk':self.pk})
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(name=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 
 

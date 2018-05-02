@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework', # should be above all the app
     'paginator',
     'blog',
+    'figure',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_PROFILE_MODULE = 'readjoy.Profile'
 
 WSGI_APPLICATION = 'readjoy.wsgi.application'
 
@@ -108,6 +111,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # used for simple tag
 BLOG_NAME = 'Chaos'
 
