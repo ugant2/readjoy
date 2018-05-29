@@ -3,11 +3,11 @@ from email.message import EmailMessage
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core.checks import messages
 from django.db.models import Q
-from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import get_template
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
@@ -15,13 +15,13 @@ from rest_framework.renderers import JSONRenderer
 from blog.api.serializers import PostSerializer
 from blog.forms import CommentForm, PostForm, ContactForm
 from blog.models import Post, Profile
-from django.urls import reverse_lazy
+
 
 class HomeListView(ListView):
     model = Post
     template_name = 'blog/home.html'
     context_object_name = 'home_list'
-    paginate_by = 3
+    paginate_by = 5
     PAGINATOR_THEME = 'foundation'
     queryset = Post.published.all()
 

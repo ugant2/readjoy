@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>readjoy.com</title>
-    {% include 'snippets/css_style.html' %}
+    {% include 'snippets/base_style.html' %}
 </head>
 <body class="container">
 {% include 'snippets/nav.html' %}
@@ -16,12 +16,17 @@
 
         {% endblock bodyBlock %}
     </div>
+    <!--<div class="img-image">-->
+        <!--{% block imageBlock %}-->
+
+        <!--{% endblock imageBlock %}-->
+    <!--</div>-->
 
 
-    <div class="related_page">
-        <h3>Latest Blog</h3>
-        {% get_latest %}
-    </div>
+    <!--<div class="related_page">-->
+        <!--<h3>Latest Blog</h3>-->
+        <!--{% get_latest %}-->
+    <!--</div>-->
 </div>
 
 <hr>

@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html' %}
 
 {% load paginator_tags %}
@@ -7,26 +5,53 @@
 
 {% block bodyBlock %}
 
+
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+
+
+<!--<div class="image">-->
+<!--{% for object in home_list %}-->
+<!--{% if object.photo %}-->
+<!--<img class="inner_image" src="{{ object.photo.url }}">-->
+<!--<a href="{% url 'blogs:detail_pg' pk=object.pk %}">-->
+
+<!--<h4> {{ object.title }} </h4>-->
+
+
+<!--</a>-->
+<!--{% endif %}-->
+<!--&lt;!&ndash;<h6>{{ object.author }}</h6>&ndash;&gt;-->
+<!--&lt;!&ndash;<h2>{{ object.author }}| {{ object.created }}</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<p>{{ object.body }}</p>&ndash;&gt;-->
+<!--{% endfor home_list %}-->
+<!--</div>-->
+
+<figure class="image_container">
     {% for object in home_list %}
-        <div id="content">
-            <h2><a href="{% url 'blogs:detail_pg' pk=object.pk %}">{{ object.title }}</a></h2>
-            <h2>{{ object.author }}| {{ object.created }}</h2>
-            <p>{{ object.body }}</p>
-        </div>
+    {% if object.photo %}
+    <img class="inner_image" src="{{ object.photo.url }}" width="350px"height="auto">
+    <a href="{% url 'blogs:detail_pg' pk=object.pk %}">
+        <h4> {{ object.title }} </h4>
+    </a>
+    {% endif %}
     {% endfor home_list %}
+</figure>
 
-       <div class="image">
-        <a href="/image">More picture...</a>
-        <img src="{% static 'image/pa.jpg' %}" height="300px" width="100%">
-        <img src="{% static 'image/w.jpg' %}" height="200px" width="100%">
-        <img src="{% static 'image/pan.jpg' %}" height="200px" width="40%">
-        <img src="{% static 'image/sch.jpg' %}" height="200px" width="50%">
-        <img src="{% static 'image/panau.jpg' %}" height="200px" width="100%">
 
-    </div>
-
-    <div>
-        {% paginator %}
-    </div>
+<div class="paginator">
+    {% paginator %}
+</div>
 
 {% endblock bodyBlock %}
+
+<!--{% block imageBlock %}-->
+<!--<div class="image">-->
+<!--<a href="/image">More picture...</a>-->
+<!--<img src="{% static 'image/pa.jpg' %}" height="300px" width="100%">-->
+<!--<img src="{% static 'image/w.jpg' %}" height="200px" width="100%">-->
+<!--<img src="{% static 'image/pan.jpg' %}" height="200px" width="40%">-->
+<!--<img src="{% static 'image/sch.jpg' %}" height="200px" width="50%">-->
+<!--<img src="{% static 'image/panau.jpg' %}" height="200px" width="100%">-->
+<!--</div>-->
+<!--{% endblock imageBlock %}-->

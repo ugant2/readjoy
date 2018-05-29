@@ -5,18 +5,18 @@
 
     <div class="container">
 
-        {#    <a href="profile.html"></a>#}
-        {#        <p> {{ user}}</p>#}
-        {#        <p> {{ user.first_name }}</p>#}
-        {#        <p>{{ user.last_name }}</p>#}
-        {#        <p>{{ user.is_active }}</p>#}
-        {#        <p>{{ user.phone }}</p>#}
-        {#        <p><img src="{{ user.image.url }}" height="300px" width="100%"></p>#}
-        {#        <p>{{ user.email }}</p><br><br>#}
+            <!--<a href="profile.html"></a>-->
+                <!--<p> {{ user}}</p>-->
+                <!--<p> {{ user.first_name }}</p>-->
+                <!--<p>{{ user.last_name }}</p>-->
+               <!--<p>{{ user.is_active }}</p>-->
+                <!--<p>{{ user.phone }}</p>-->
+                <!--<p><img src="{{ user.image.url }}" height="300px" width="100%"></p>-->
+                <!--<p>{{ user.email }}</p><br><br>-->
 
-        {#    {% if user.is_active %}#}
-        {#        <p>this is it</p>#}
-        {#        {% endif %}#}
+            <!--{% if user.is_active %}-->
+                <!--<p>this is it</p>-->
+                <!--{% endif %}-->
 
     {# Using extracting user profile using Signals #}
     <h3>Profile of:- {{ user.get_full_name }}</h3>
@@ -35,15 +35,15 @@
     </form>
 
 
-{#        this extract all the user profile along with logged in user#}
-{#        {% for objects in profile_list %}#}
-{##}
-{#            <p>{{ objects.name }}</p>#}
-{#            <p>{{ objects.email }}</p>#}
-{#            <p>{{ objects.address }}</p>#}
-{#            <p><img src="{{ objects.image.url }}" height="300px" width="100%"></p>#}
-{##}
-{#        {% endfor profile_list %}#}
+        <!--this extract all the user profile along with logged in user-->
+       <!--{% for objects in profile_list %}-->
+
+            <!--<p>{{ objects.name }}</p>-->
+            <!--<p>{{ objects.email }}</p>-->
+            <!--<p>{{ objects.address }}</p>-->
+            <!--<p><img src="{{ objects.image.url }}" height="300px" width="100%"></p>-->
+
+        <!--{% endfor profile_list %}-->
 
     </div>
 

@@ -24,6 +24,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey("auth.User", related_name='blog_post')
     body = models.TextField()
+    photo = models.ImageField(blank=True, null=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

@@ -7,7 +7,8 @@
 
     <div class="one_post">
         <h2>{{ post.title }}</h2>
-        <h2>{{ post.author }} | {{ post.created }}</h2>
+        <img src="{{ post.photo.url }}" height="300px" , width="100%">
+        <h6>{{ post.author }} | {{ post.created }}</h6>
         <p>{{ post.body }}</p>
     </div>
     <h2>Similar Post:</h2>
@@ -31,5 +32,7 @@
     {{ comment_form.as_p }}
     <input type="submit" value="comment">
     </form>
+
+
 
 {% endblock bodyBlock %}

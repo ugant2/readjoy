@@ -1,0 +1,58 @@
+
+
+/*{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'home.css' %}">*/
+
+
+
+h1{
+    color: #000000;
+    margin: 0px;
+    padding: 0px;
+}:
+p{
+    color: #bab80c;
+    margin: 0;
+    padding: 0;
+}
+.image img.inner_image{
+    width: 350px;
+    height: 100%;
+    /*float: right;*/
+    margin: 0px 20px 20px 0px;
+    position: relative;
+}
+.image h4{
+   position: absolute;
+   color: #ef7a13;
+   float: right;
+   font-size: 16px;
+   bottom: 0px;
+   background:rgba(251,251,251,0.5);
+   text-align:center;
+}
+.paginator{
+    text-align: center;
+    margin: 40px 0px 0px 600px;
+    float: right;
+}
+/*.related_page{
+    width: 40%;
+    margin: 25px 50px 0px 0px;
+
+}*/
+figure.image_container img{
+    float: right;
+    position: realtive;
+    z-index: 1;
+    margin: 0px 20px 20px 0px;
+
+}
+
+figure.image_container h4{
+    position: absolute;
+    margin: 50px;
+    z-index: 500;
+    font-size: 13px;
+
+}
