@@ -29,17 +29,17 @@
 
 <figure class="image_container">
     {% for object in home_list %}
-    {% if object.photo %}
-    <img class="inner_image" src="{{ object.photo.url }}" width="350px"height="auto">
     <a href="{% url 'blogs:detail_pg' pk=object.pk %}">
-        <h4> {{ object.title }} </h4>
+        {% if object.photo %}
+        <img class="inner_image" src="{{ object.photo.url }}">
+        <strong> {{ object.title }} </strong>
     </a>
     {% endif %}
     {% endfor home_list %}
 </figure>
 
 
-<div class="paginator">
+<div id="paginator">
     {% paginator %}
 </div>
 

@@ -1,6 +1,15 @@
 
+
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+
 {% block bodyBlock %}
+
+<link rel="stylesheet" href="{% static 'css/api.css' %}">
+
+
+<div class="wrapper">
 <h1>API Documentation</h1>
 
     <p class="text-info">HTTP GET</p>
@@ -20,4 +29,5 @@
     </tr>
     </tbody>
     </table>
+</div>
 {% endblock %}

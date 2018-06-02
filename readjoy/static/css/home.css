@@ -1,0 +1,68 @@
+
+
+/*{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'home.css' %}">*/
+
+
+
+h1{
+    color: #000000;
+    margin: 0px;
+    padding: 0px;
+}
+p{
+    color: #bab80c;
+    margin: 0;
+    padding: 0;
+}
+figure.image_container{
+    background:rgba(0,0,0,0.5);
+}
+figure.image_container a{
+    display: block;
+    float: left;
+    width: 350px;
+    color: #e8501e;
+    height: auto;
+    margin: 0px 15px 10px 14px;
+    position: relative;
+    filter: alpha(opacity=0.6);
+}
+figure.image_container a:hover{
+    color: #ffffff;
+
+}
+
+figure.image_container img{
+    width: 100%;
+
+}
+
+figure.image_container a strong{
+    display: inline;
+    top: 150px;
+    right: 100px;
+    width: 250px;
+    text-align:center;
+    font-size: 20px;
+    position: absolute;
+    z-index: 1;
+
+
+}
+/*figure.image_container a strong:hover{
+    background:rgba(0,0,0,0.5);
+}*/
+#paginator{
+    text-align: center;
+    margin: 40px 0px 0px 600px;
+    float: left;
+}
+/*.related_page{
+    width: 40%;
+    margin: 25px 50px 0px 0px;
+
+}*/
+
+
+

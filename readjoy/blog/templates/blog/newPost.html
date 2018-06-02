@@ -1,8 +1,13 @@
 
 
-
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+
 {% block bodyBlock %}
+
+<link rel="stylesheet" href="{% static 'css/newPost.css' %}">
+<div class="wrapper">
 <h3>Enter new Post</h3>
     <form action="" method="POST">
         {% csrf_token %}
@@ -10,4 +15,5 @@
         <button type="submit">Create Post</button>
     </form>
 
+</div>
 {% endblock bodyBlock %}

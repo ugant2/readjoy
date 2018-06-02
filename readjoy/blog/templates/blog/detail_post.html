@@ -1,38 +1,46 @@
-
-
 {% extends 'base.html' %}
 {% load blog_tags %}
+{% load staticfiles %}
 
 {% block bodyBlock %}
 
+<link rel="stylesheet" href="{% static 'css/detail_post.css' %}">
+
+<div class="wrapper">
     <div class="one_post">
         <h2>{{ post.title }}</h2>
-        <img src="{{ post.photo.url }}" height="300px" , width="100%">
         <h6>{{ post.author }} | {{ post.created }}</h6>
+        <img src="{{ post.photo.url }}">
         <p>{{ post.body }}</p>
     </div>
-    <h2>Similar Post:</h2>
-    {% similar post.title post.pk as ditto_page %}
-    <ul>
-     {% for same in ditto_page %}
-         <li><a href="{% url 'blogs:detail_pg' pk=same.pk %}">{{ same.title }}</a></li>
-    {% endfor %}
-    </ul>
-    <hr>
-    <h2>Comments</h2>
-    {% for comments in comment %}
-        <p>{{ comments.name }}</p>
-        <p>{{ comments.email }}</p>
-        <p>{{ comments.comment_body }}</p> <br>
 
-    {% endfor comment %}
-    <hr>
-    <h2>Add Comment</h2>
-    <form action="" method="post">{% csrf_token %}
-    {{ comment_form.as_p }}
-    <input type="submit" value="comment">
-    </form>
 
+    <div class="comments"><hr>
+        <h2>Discussions</h2>
+        <form action="" method="post">{% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" value="comment">
+        </form>
+        {% for comments in comment %}
+        <strong>{{ comments.name }}:</strong>
+        <!--<p>{{ comments.email }}</p>-->
+        <span>{{ comments.comment_body }}</span>
+        <br>
+
+        {% endfor comment %}
+    </div>
+
+    <div class="similar_post">
+        <h2>Post you might like</h2>
+        {% similar post.title post.pk as ditto_page %}
+        <ul>
+            {% for same in ditto_page %}
+            <li><a href="{% url 'blogs:detail_pg' pk=same.pk %}">{{ same.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
 
 
 {% endblock bodyBlock %}

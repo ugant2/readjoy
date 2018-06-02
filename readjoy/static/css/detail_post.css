@@ -1,0 +1,28 @@
+
+div.wrapper{
+    text-align: center;
+}
+
+div.wrapper .one_post h2{
+    font-size: 26px;
+    font-weight: bold;
+    margin: 20px 0px 1px 0px;
+}
+div.wrapper .one_post p{
+    margin: 20px;
+    font-size: 18px;
+}
+div.wrapper .one_post img{
+    width: 100%;
+    height: 500px;
+
+}
+div.similar_post{
+
+    width: 100p%;
+}
+
+div.comments{
+    margin-top: 20px;
+    width: 100%;
+}

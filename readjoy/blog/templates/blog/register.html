@@ -1,11 +1,18 @@
 
 
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+
 {% block bodyBlock %}
+
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<div class="wrapper">
 <h2>register page</h2>
     <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button class="btn-danger" type="submit">Register</button>
     </form>
+</div>
 {% endblock %}

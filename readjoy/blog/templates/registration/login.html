@@ -2,15 +2,25 @@
 
 
 {% extends 'base.html' %}
+{% load staticfiles %}
+
 {% block bodyBlock %}
-<h2>Login page</h2>
+<div style="float: left;">
+<h2 style="color: #24e2e5; margin: 30px;">Let the world read your story.</h2>
     {% if form.errors %}
         <p>Enter valid username and password</p>
     {% endif %}
     <form action="{% url 'blogs:login' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-        <button type="submit" class="btn btn-danger">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <strong style="font-size: 12px;">No account, No Worry.<a href="{% url 'blogs:register' %}">Register for free</a></strong>
     <input type="hidden" name="next" value="{{ next }}">
     </form>
+</div>
+
+<div style="float: left;">
+    <img src="{% static 'image/hello.jpeg' %}" height="250px" width="100%">
+</div>
+
 {% endblock %}

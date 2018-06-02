@@ -24,7 +24,7 @@
                     <a class="nav-link" href="{% url 'blogs:logout' %}?next={% url 'blogs:home_pg' %}">Logout</a>
                     <a class="nav-link" href="{% url 'blogs:profile_pg' %}">View Profile</a>
                 {% else %}
-                    <a class="navbar-link" href="{% url 'blogs:login' %}?next={{ request.path }}">Blog Login</a>
+                    <a class="navbar-link" href="{% url 'blogs:login' %}?next={{ request.path }}">Login</a>
                     <a class="nav-link" href="{% url 'blogs:register' %}">Register</a>
                 {% endif %}
             </li>
