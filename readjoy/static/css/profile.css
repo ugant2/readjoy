@@ -1,0 +1,11 @@
+div.container{
+    text-align: center;
+    width: 100%;
+    margin: 20px 0px 0px 200px;
+}
+img {
+    width: 50%;
+}
+div.container ul li{
+    list-style-type: none;
+}

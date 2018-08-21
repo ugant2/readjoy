@@ -1,10 +1,37 @@
 
 
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block bodyBlock %}
-    {% for object in about_list %}
-    <h2>{{ object.title }}</h2>
-            <h2>{{ object.author }}| {{ object.created }}</h2>
-            <p>{{ object.body }}</p>
-    {% endfor about_list %}
-{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+    <div class="container">
+        <div class="docs-content">
+            <h3>Who we Are?</h3>
+            <img src="{% static 'image/panau.jpg' %}" height="200px" width="100%">
+            <p>It is a long established fact that a reader will be distracted by the readable content of
+                a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                distribution of letters, as opposed to using 'Content here, content here', making it look like
+                readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                Various versions have evolved over the years,
+                sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+        </div>
+
+        <div class="social_link">
+
+            <h3>Meet Us Over Here</h3>
+            <a href="https://www.facebook.com" target="_blank"><img src="{% static 'image/fb_icon.png' %}" height="200px"></a>
+            <a href="https://www.googleplus.com" target="_blank"><img src="{% static 'image/google_icon.png' %}" height="200px"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="{% static 'image/youtube_icon.png' %}" height="200px"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="{% static 'image/twitter_icon.png' %}" height="200px"></a>
+        </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d39964.3232788139!2d85.24368247942154!3d27.705535853354895!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1532314701506" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+    </div>
+{% endblock bodyBlock %}
+
+
+
+

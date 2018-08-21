@@ -22,7 +22,7 @@ class HomeListView(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'home_list'
     paginate_by = 5
-    PAGINATOR_THEME = 'foundation'
+    # PAGINATOR_THEME = 'foundation'
     queryset = Post.published.all()
 
 
@@ -30,7 +30,7 @@ class PostDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')  # get single PK from the post
         try:
-            one_post = Post.object.get(
+            one_post = Post.objects.get(
                 Q(pk=pk) & Q(status='published')
             )
         except:
@@ -134,14 +134,14 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/JSON'
         super(JSONResponse, self).__init__(content, **kwargs)
 
-
+@login_required
 def post_list_api(request):
     if request.method == 'GET':
         posts = Post.published.all()
         post_serializer = PostSerializer(posts, many=True)
         return JSONResponse(post_serializer.data)
 
-
+@login_required
 def post_detail_api(request, pk):
     try:
         one_post = Post.published.get(pk=pk)
@@ -151,7 +151,7 @@ def post_detail_api(request, pk):
         post_detail_serializer = PostSerializer(one_post)
         return JSONResponse(post_detail_serializer.data)
 
-
+@login_required
 def api_doc(request):
     return render(request, 'blog/api_doc.html')
 
@@ -171,16 +171,17 @@ class UserProfleListView(ListView):
 
 
 class ProfileUpdateForm(UpdateView):
-        model = Profile
-        fields = ['name', 'email', 'address', 'phone', 'image']
-        template_name = 'blog/profile_edit.html'
-        # success_url = reverse_lazy('blogs:profile_pg') is needed if when get_absolute_url is not defined in model.py
+    model = Profile
+    fields = ['name', 'email', 'address', 'phone', 'image']
+    template_name = 'blog/profile_edit.html'
+    # success_url = reverse_lazy('blogs:profile_pg') is needed if when get_absolute_url is not defined in model.py
+
 
 class ProfileDeleteForm(DeleteView):
     model = Profile
     fields = ['name', 'email', 'address', 'phone', 'image']
     template_name = 'blog/profile_delete.html'
-    success_url = reverse_lazy('blogs:home_pg') # itll redirect to home page ater delete
+    success_url = reverse_lazy('blogs:home_pg')  # itll redirect to home page ater delete
 
 
 # def profile_delete_view(request, pk=None):
@@ -199,3 +200,21 @@ def profile_delete_view(request, pk):
     obj = get_object_or_404(Profile, pk=pk)
     obj.delete()
     return redirect('blogs:profile_delete')
+
+
+def get_user_manual(request):
+    return render(request, 'blog/user_manual.html')
+
+
+def search_result(request, *args, **kwargs):
+    query = request.POST.get('searchquery')
+    result = Post.objects.filter(
+        (Q(title__contains=query) | Q(body__contains=query)) & Q(status="published")
+    )
+    count = result.count()
+    ctx = {
+        'result': result,
+        'count': count
+    }
+
+    return render(request, 'blog/search.html', context=ctx)

@@ -1,0 +1,30 @@
+div.container{
+    text-align: center;
+    width: 100%;
+    margin: 20px 0px 0px 5px;
+
+}
+
+div.social_link img{
+    width: 80px;
+    height: 100px;
+}
+
+div.docs-content img{
+    align: center;
+    width: 500px;
+}
+
+div.docs-content p{
+    margin: auto;
+}
+
+div.social_link img{
+    width: 90px;
+}
+
+
+iframe{
+    width: 1000px;
+    margin-top: 20px;
+}

@@ -1,0 +1,14 @@
+div.wrapper{
+    text-align: center;
+    width: 100%;
+    /*margin: 20px 0px 0px 200px;*/
+}
+/*div.glossary img{
+	width: 200px;
+	height: 200px;
+}*/
+
+div.glossary h4, li{
+	text-align: center;
+	width: 100%;
+}

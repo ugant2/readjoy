@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% load paginator_tags %}
+{% load pagination_tags %}
 {% load staticfiles %}
 
 {% block bodyBlock %}
 
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-<link rel="stylesheet" href="{% static 'home.css' %}">
-
+{% autopaginate object_list 3 %}
 
 
 <!--<div class="image">-->
@@ -33,6 +33,7 @@
         {% if object.photo %}
         <img class="inner_image" src="{{ object.photo.url }}">
         <strong> {{ object.title }} </strong>
+
     </a>
     {% endif %}
     {% endfor home_list %}
@@ -40,8 +41,9 @@
 
 
 <div id="paginator">
-    {% paginator %}
+    {% paginate %}
 </div>
+
 
 {% endblock bodyBlock %}
 

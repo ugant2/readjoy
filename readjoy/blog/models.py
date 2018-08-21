@@ -35,7 +35,7 @@ class Post(models.Model):
         ordering = ('-publish',) # order by publish date
 
     #  creating object of manager
-    object = models.Manager()
+    objects = models.Manager()
     published = PublishManager() # used as custom manager
 
     # string representation

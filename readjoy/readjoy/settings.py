@@ -12,7 +12,7 @@ SECRET_KEY = 'f27-)gxmky%=fm$=+7p2x!ch=hjp94g9ptf7=hf38cy7@q5agh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver', ]
 
 # Application definition
 
@@ -23,8 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', # should be above all the app
-    'paginator',
+    'rest_framework',  # should be above all the app
+    'dj_pagination',
     'blog',
     'figure',
 ]
@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dj_pagination.middleware.PaginationMiddleware',
 ]
 
 ROOT_URLCONF = 'readjoy.urls'

@@ -1,6 +1,3 @@
-
-
-
 from django import template
 from django.db.models import Q
 from django.utils.datetime_safe import datetime
@@ -8,18 +5,20 @@ from blog.models import Post
 
 from readjoy.settings import BLOG_NAME
 
-
 register = template.Library()
+
 
 # simple tag
 @register.simple_tag
 def blog_name():
     return BLOG_NAME
 
+
 @register.simple_tag
 def footer():
     year = datetime.today().year
     return "Copyright {}".format(str(year))
+
 
 # Inclusion Tag
 @register.inclusion_tag('blog/latest.html')
@@ -30,6 +29,7 @@ def get_latest(count=None):
     else:
         latest = Post.published.all()[:4]
     return {'latest_blog': latest}
+
 
 # assingment tag
 @register.assignment_tag

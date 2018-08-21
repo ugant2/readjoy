@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block bodyBlock %}
+
+<link rel="stylesheet" href="{% static 'css/manual.css' %}">
+
+<div class="wrapper">
+
+<h2>Welcome to user manual</h2>
+
+<p>Welcome to the Travel Blog User Manual where you can read the awesome <br>travel stories and
+    experience shared by the creative people over Nepal and beyond.<br>
+    This User Manual will provide steps by steps to guide to explore this awesome Travel Blog.<br>
+    It will help you to use all the features and guide you to solve issues that might be faced
+    by you during the time.
+</p>
+
+<h4>Guest User</h4>
+
+<p>Since it is web based system, guest user can read the blog and contact administrator without any obstacles.</p>
+<hr>
+
+<h4>Register</h4>
+<ul>
+    <li>Click on Register menu in the navigation bar.<br><img src="{% static 'image/reg1.png' %}"></li>
+    <li>Fill in Username and Password. Its quite easy though, later you can add further information on your profile page. <br><img src="{% static 'image/reg2.png' %}" width="700px" height="200px"></li>
+    <li>Now click on Register Button to register as user.<br><img src="{% static 'image/reg3.png' %}" width="700px" height="200px"></li>
+</ul>
+<hr>
+
+
+<h4>Logging In</h4>
+<ul>
+    <li>Go to the navigation bar and click on Login to get access into blog.<br><img src="{% static 'image/log1.png' %}" width="700px" height="200px"></li>
+    <li>Type Username and Password to login into blog.<br><img src="{% static 'image/log2.png' %}" width="700px" height="200px"></li>
+    <li>Click on Login button to login into blog.<br><img src="{% static 'image/log3.png' %}" width="700px" height="200px"></li>
+</ul>
+<hr>
+
+
+<h4>Logging Out</h4>
+<ul>
+    <li>To logout from the blog simply click on logout in the navigation bar.<br><img src="{% static 'image/logout1.png' %}"></li>
+</ul>
+<hr>
+
+<h4>Writing Post</h4>
+<ul>
+    <li>Go to View Profile in the navigation bar.<br><img src="{% static 'image/post.png' %}" width="700px" height="200px"></li>
+    <li>Click on Edit button.<br><img src="{% static 'image/post2.png' %}" width="700px" height="200px"></li>
+    <li>Make up the necessary change.<br><img src="{% static 'image/post3.png' %}" width="700px" height="200px"></li>
+</ul>
+<hr>
+
+<h4>Contacting Administration</h4>
+<ul>
+    <li>Click on Contact on navigation bar.<br><img src="{% static 'image/contact1.png' %}"></li>
+    <li>Fill email address, subject, and e-mail body.<br><img src="{% static 'image/contact2.png' %}"></li>
+    <li>Click on Send button to send e-mail. <br><img src="{% static 'image/contact3.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>Administration</h4>
+
+<p>For administrations of the Blog, s/he can perform various task and have lots of privileges
+in contrast to other normal users.<br>Lets navigate ho to use administration site in the blog.</p>
+
+<h4>To Enter into Administration Site</h4>
+<ul>
+    <li>Go to address bar of the web browser and type www.travelblog.com/admin. <br><img src="{% static 'image/admin_login1.png' %}"></li>
+    <li>Login window will pop up. Fill in the username and password.<br><img src="{% static 'image/admin_login2.png' %}"></li>
+    <li>Click on login button.<br><img src="{% static 'image/admin_login3.png' %}"></li>
+</ul>
+<hr>
+
+<h4>Administration Logging Out</h4>
+<ul>
+    <li>To logout click on logout in the top-right corner of the blog.<br><img src="{% static 'image/admin_logout.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>Adding User</h4>
+<ul>
+    <li>To add user, click on add of User column.<br><img src="{% static 'image/add_user1.png' %}"></li>
+    <li>Fill necessary information.<br><img src="{% static 'image/add_user2.png' %}"></li>
+    <li>Click on save.<br><img src="{% static 'image/add_user3.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>To change Post, Comment, and Profile</h4>
+<p>Admin has right ot make any changes like deleting, updating on
+    the profile, post, and comment of the user. Here, is steps for Posts for which
+    Comment and Profile follows the same step.</p>
+<ul>
+    <li>    1. Click on Add on the Profile column.<br><img src="{% static 'image/admin_add1.png' %}"></li>
+    <li>    2. Fill all the information regarding user.<br><img src="{% static 'image/admin_add2.png' %}"></li>
+    <li>    3. Click on save.<br><img src="{% static 'image/admin_add3.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>To view all the User</h4>
+<ul>
+    <li>Click on Profile<br><img src="{% static 'image/admin_view.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>To select Individual User</h4>
+<ul>
+    <li>Mark the interested User.<br><img src="{% static 'image/admin_view1.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>To Delete User</h4>
+<ul>
+    <li>Click Action, Select Delete, and Click GO.<br><img src="{% static 'image/admin_delete.png' %}"></li>
+</ul>
+<hr>
+
+
+<h4>To change Password</h4>
+<ul>
+    <li>    1. Go to admin dashboard, click on change password on  top-right of the blog.<br><img src="{% static 'image/password_change1.png' %}" width="700px" height="200px"></li>
+    <li>    2. Fill necessary information.<br><img src="{% static 'image/password_change2.png' %}" width="700px" height="200px"></li>
+    <li>Click on change<br><img src="{% static 'image/password_change3.png' %}" width="700px" height="200px"></li>
+</ul>
+<hr>
+
+</div>
+
+
+<div class="glossary">
+<h4>Glossary</h4>
+<ul>
+    <li><strong>User Manual</strong> - steps by steps help to user and solve issues.</li>
+    <li><strong>Blog</strong> - online journal or online information sharing websites.
+    <li><strong>Navigation</strong> - to search or travel.</li>
+    <li><strong>E-mail</strong> - an electronic mail for sending messages.</li>
+    <li><strong>API</strong> - Application Programming Interface which help to integrate between applications.</li>
+    <li><strong>Documentation</strong> - Printed or written text which holds information about particular subjects.</li>
+    <li><strong>JSON</strong> - Java Script Object Notation</li>
+    <li><strong>Administrations</strong> - office of an administrator who runs office.</li>
+</ul>
+</div>
+
+{% endblock bodyBlock %}

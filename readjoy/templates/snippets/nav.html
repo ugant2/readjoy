@@ -1,5 +1,12 @@
-
 {% load blog_tags %}
+<style>
+    .nav-item{
+        margin: auto;
+    }
+
+</style>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'blogs:home_pg' %}">{% blog_name %}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,12 +27,12 @@
             </li>
             <li class="nav-item">
                 {% if user.is_authenticated %}
-                    <h6>{{ user.username }}</h6>
-                    <a class="nav-link" href="{% url 'blogs:logout' %}?next={% url 'blogs:home_pg' %}">Logout</a>
-                    <a class="nav-link" href="{% url 'blogs:profile_pg' %}">View Profile</a>
+                <!--<h6>{{ user.username }}</h6>-->
+                <a class="nav-link" href="{% url 'blogs:logout' %}?next={% url 'blogs:home_pg' %}">Logout</a>
+                <a class="nav-link" style="float: right;" href="{% url 'blogs:profile_pg' %}">View Profile</a>
                 {% else %}
-                    <a class="navbar-link" href="{% url 'blogs:login' %}?next={{ request.path }}">Login</a>
-                    <a class="nav-link" href="{% url 'blogs:register' %}">Register</a>
+                <a class="navbar-link" href="{% url 'blogs:login' %}?next={{ request.path }}">Login</a>
+                <a class="nav-link" href="{% url 'blogs:register' %}">Register</a>
                 {% endif %}
             </li>
             <li class="nav-item">
@@ -36,8 +43,9 @@
                 <a class="nav-link" href="{% url 'blogs:api_doc' %}">API</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'blogs:search_pg' %}" method="POST">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchquery" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

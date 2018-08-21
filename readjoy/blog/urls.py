@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^profile_edit/(?P<pk>[0-9]+)/$', views.ProfileUpdateForm.as_view(), name='profile_edit'),
     # url(r'^profile_delete/(?P<pk>[0-9]+)/$', views.profile_delete_view, name='profile_delete'),
     # url(r'^profile_delete/(?P<pk>[0-9]+)/$', views.ProfileDeleteForm.as_view(), name='profile_delete'),
+    url(r'^manual/', views.get_user_manual, name='manual'),
+    url(r'^search/', views.search_result, name='search_pg')
 ]
 
 if settings.DEBUG:
