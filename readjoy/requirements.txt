@@ -1,6 +1,6 @@
 cycler==0.10.0
 dj-pagination==2.3.2
-Django==1.11
+Django==1.11.29
 djangorestframework==3.8.2
 kiwisolver==1.0.1
 matplotlib==2.2.2
